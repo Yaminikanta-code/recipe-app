@@ -20,12 +20,4 @@ const Button = ({
   );
 };
 
-Button.propTypes = {
-  children: PropTypes.node.isRequired, // Button text or elements
-  onClick: PropTypes.func, // Click handler
-  className: PropTypes.string, // Tailwind classes
-  type: PropTypes.oneOf(["button", "submit", "reset"]), // Button type
-  disabled: PropTypes.bool, // Disabled state
-};
-
 export default Button;
