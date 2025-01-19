@@ -14,8 +14,9 @@ function AuthForm() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      email: "", // Initialize the email field
-      password: "", // Initialize the password field
+      name: "",
+      email: "",
+      password: "",
     },
   });
 
@@ -63,8 +64,8 @@ function AuthForm() {
               <Button type="submit">{islogin ? "Login" : "Sign Up"}</Button>
               <p className="text-sm text-foreground ">
                 {islogin
-                  ? "Don't have an account?"
-                  : "Already have an account?"}
+                  ? "Don't have an account? "
+                  : "Already have an account? "}
                 <span>
                   {islogin ? (
                     <button

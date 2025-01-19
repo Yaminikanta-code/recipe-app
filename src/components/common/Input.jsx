@@ -32,7 +32,7 @@ const Input = ({
             id={id}
             type={type}
             placeholder={placeholder}
-            className={`flex h-10 w-full rounded-md border ${
+            className={`flex h-10 w-full rounded-md border focus:border-none ${
               fieldState.error
                 ? "border-red-500 focus-visible:ring-red-500"
                 : "border-input focus-visible:ring-ring"
