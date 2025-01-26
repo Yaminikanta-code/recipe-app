@@ -7,7 +7,11 @@ function Header() {
     <MenuBar className="justify-between">
       <Logo />
       <div className="flex items-center">
-        <Avatar className="mx-4">UF</Avatar>
+        {user && (
+          <Avatar className="mr-2">
+            {user.name.slice(0, 2).toUpperCase()}
+          </Avatar>
+        )}
       </div>
     </MenuBar>
   );

@@ -1,14 +1,11 @@
 import React from "react";
-import AuthForm from "./components/authentication/AuthForm";
-import Header from "./components/header/Header";
+import { AuthPage } from "./pages";
 
 function App() {
   return (
     <>
       <div>
-        <Header />
-
-        <AuthForm />
+        <AuthPage />
       </div>
     </>
   );
