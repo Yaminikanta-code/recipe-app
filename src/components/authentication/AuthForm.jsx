@@ -1,6 +1,8 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Card, Input, Button } from "../common";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import {
   emailValidation,
   passwordValidation,
@@ -8,7 +10,10 @@ import {
 } from "../../validations/authValidation";
 
 function AuthForm() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [islogin, setIsLogin] = React.useState(true);
+  const [error, setError] = React.useState("");
   const {
     control,
     handleSubmit,
@@ -22,7 +27,13 @@ function AuthForm() {
   });
 
   function onSubmit(data) {
+    setError("");
     console.log(data);
+    if (islogin) {
+      // login logic
+    } else {
+      // signup logic
+    }
   }
 
   return (
@@ -36,7 +47,6 @@ function AuthForm() {
             {islogin ? "Welcome back" : "Create an account"}
           </h2>
         </div>
-
         <form onSubmit={handleSubmit(onSubmit)} noValidate>
           <div className="flex flex-col space-y-4">
             {!islogin && (
