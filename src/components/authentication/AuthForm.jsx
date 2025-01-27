@@ -8,16 +8,20 @@ import {
   passwordValidation,
   nameValidation,
 } from "../../validations/authValidation";
+import { login, signup } from "../../services/auth.service";
+import { showAlert } from "../../store/alertSlice";
+import { ALERT_TYPE } from "../../constants/alert.constant";
 
 function AuthForm() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [islogin, setIsLogin] = React.useState(true);
   const [error, setError] = React.useState("");
+  //const navigate = useNavigate();
   const {
     control,
     handleSubmit,
     formState: { errors },
+    reset, // Get the reset function
   } = useForm({
     defaultValues: {
       name: "",
@@ -26,13 +30,48 @@ function AuthForm() {
     },
   });
 
-  function onSubmit(data) {
+  async function onSubmit(data) {
     setError("");
     console.log(data);
     if (islogin) {
-      // login logic
+      try {
+        const response = await login(data.email, data.password);
+        dispatch(login(response.data.data));
+        dispatch(
+          showAlert({
+            message: "Login successful!",
+            type: ALERT_TYPE.SUCCESS,
+          })
+        );
+        reset(); // Reset the form on success
+        //navigate to home page todo
+      } catch (error) {
+        dispatch(
+          showAlert({
+            message: error.response.data?.message || "Login failed",
+            type: ALERT_TYPE.ERROR,
+          })
+        );
+      }
     } else {
-      // signup logic
+      try {
+        const response = await signup(data.name, data.email, data.password);
+        dispatch(
+          showAlert({
+            message: response.data?.message || "Signup successful!",
+            type: ALERT_TYPE.SUCCESS,
+          })
+        );
+        setIsLogin(true);
+        reset(); // Reset the form on success
+      } catch (error) {
+        dispatch(
+          showAlert({
+            message: error.response.data?.message || "Signup failed",
+            type: ALERT_TYPE.ERROR,
+          })
+        );
+      }
     }
   }
 
