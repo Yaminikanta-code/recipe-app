@@ -6,6 +6,8 @@ import Avatar from "./Avatar";
 import Alert from "./Alert";
 import Dropdown from "./Dropdown";
 import MultiSelectDropdown from "./MultiSelectDropdown";
+import Textarea from "./Textarea";
+import FileInput from "./FileInput";
 
 export {
   Button,
@@ -16,4 +18,6 @@ export {
   Alert,
   Dropdown,
   MultiSelectDropdown,
+  Textarea,
+  FileInput,
 };

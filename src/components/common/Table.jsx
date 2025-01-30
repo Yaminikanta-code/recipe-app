@@ -1,5 +1,6 @@
 import React from "react";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Table({ columns, data, title, showActions = true }) {
   return (
@@ -73,3 +74,5 @@ function Table({ columns, data, title, showActions = true }) {
 }
 
 export default Table;
+
+//improvements
